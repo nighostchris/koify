@@ -1,0 +1,27 @@
+{
+  "name": "koify",
+  "version": "1.0.0",
+  "description": "Simple web framework with built-in utilities like logging, input validation and database connection. Based on Koa.js.",
+  "author": "Chris Liu <chrisliupascal@gmail.com>",
+  "repository": "git@github.com:nighostchris/koify.git",
+  "license": "MIT",
+  "main": "./built/index.js",
+  "scripts": {
+    "test": ""
+  },
+  "keywords": [
+    "koify",
+    "typescript"
+  ],
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.28.2",
+    "@typescript-eslint/parser": "^4.28.2",
+    "eslint": "^7.30.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.23.4",
+    "typescript": "^4.3.5"
+  },
+  "dependencies": {
+    "koa": "^2.13.1"
+  }
+}
