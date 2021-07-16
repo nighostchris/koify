@@ -1,3 +1,17 @@
+/**
+ * How to use KoifyService
+ * 
+ * Example:
+ * class TestService extends KoifyService {
+ *    public pong(ctx: any) {
+ *      return this.success({
+ *        ctx,
+ *        body: { result: 'pong' },
+ *      })
+ *    }
+ * }
+ */
+
 import { IServiceReponse } from "./interfaces";
 
 export class KoifyService {

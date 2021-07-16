@@ -16,19 +16,21 @@ import Router from '@koa/router';
 
 import { IRoute } from './interfaces';
 
-export function KoifyRouter(router: Router, service: any, ...routes: IRoute[]) {
+export function KoifyRouter(router: Router, service: any, ...routes: IRoute[]): Router {
   routes.forEach((route: IRoute) => {
     router[route.method](route.route || '/', async (ctx, next) => {
       try {
         // Return result inside service function by
         // ctx.body = { <results> }
-        // ctx.status = 200 for success, other HTTP erro
+        // ctx.status = 200 for success, other HTTP error
         service[route.handler](ctx);
       } catch (error) {
         throw new Error('Handler function missing in the service');
       }
     });
   });
+
+  return router;
 }
 
 export function Get(handler: string): IRoute;
