@@ -1,15 +1,16 @@
 {
   "name": "koify",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple web framework with built-in utilities like logging, input validation and database connection. Based on Koa.js.",
   "author": "Chris Liu <chrisliupascal@gmail.com>",
   "repository": "git@github.com:nighostchris/koify.git",
   "license": "MIT",
   "main": "./built/index.js",
   "scripts": {
-    "test": "",
+    "test": "jest --verbose --config jest.config.js",
     "lint": "eslint --config .eslintrc.json --ignore-path .eslintignore ./src/**/*.ts",
-    "build": "npx tsc"
+    "build": "npx tsc",
+    "jest-init": "npx ts-jest config:init"
   },
   "keywords": [
     "koify",

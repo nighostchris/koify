@@ -14,4 +14,12 @@ export class KoifyValidator {
   public static isString(input: any): boolean {
     return typeof input === 'string';
   }
+
+  public static isObject(input: any): boolean {
+    return typeof input === 'object' && input !== null && !Array.isArray(input);
+  }
+
+  public static isArray(input: any): boolean {
+    return typeof input === 'object' && Array.isArray(input);
+  }
 }

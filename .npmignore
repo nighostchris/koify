@@ -8,4 +8,5 @@ node_modules/
 tsconfig.json
 .eslintrc.json
 .gitlab-ci.yml
+jest.config.js
 increase-built.js
