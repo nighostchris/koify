@@ -13,12 +13,10 @@
     "declaration": true,
     "outDir": "./built/",
     "rootDir": "./src/",
-    "types": ["node"]
   },
   "include": ["src/**/*"],
   "exclude": [
     "*.js",
     "node_modules",
-    "**/*.spec.ts"
   ]
 }
