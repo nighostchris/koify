@@ -1,6 +1,6 @@
 {
   "name": "koify",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Simple web framework with built-in utilities like logging, input validation and database connection. Based on Koa.js.",
   "author": "Chris Liu <chrisliupascal@gmail.com>",
   "repository": "git@github.com:nighostchris/koify.git",
