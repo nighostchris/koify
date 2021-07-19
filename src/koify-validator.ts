@@ -23,3 +23,5 @@ export class KoifyValidator {
     return typeof input === 'object' && Array.isArray(input);
   }
 }
+
+export default KoifyValidator;

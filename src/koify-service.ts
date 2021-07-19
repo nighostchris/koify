@@ -34,3 +34,5 @@ export class KoifyService {
     }
   }
 }
+
+export default KoifyService;
