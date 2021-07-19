@@ -17,20 +17,38 @@ export class KoifyDatabase {
   public static getConnection(name: string): Knex<any, any[]> | undefined {
     return this.store.get(name);
   }
+
+  public static removeConnection(name: string): boolean {
+    try {
+      const connection = this.store.get(name);
+
+      if (typeof connection !== 'undefined') {
+        connection.destroy();
+      }
+  
+      this.store.delete(name);
+
+      return true;
+    } catch (err) {
+      return false;
+    }
+  }
 }
 
 export class KoifyMySQLDatabase {
   private table: string;
 
-  private connection: Knex<any, any[]> = knex({});
+  private connection: Knex<any, any[]>;
 
   constructor(tableName: string, dbName: string) {
     this.table = tableName;
     const connection = KoifyDatabase.getConnection(dbName);
 
-    if (typeof connection !== 'undefined') {
-      this.connection = connection;
+    if (typeof connection === 'undefined') {
+      throw Error(`Cannot find database connection with name: ${dbName}`);
     }
+ 
+    this.connection = connection;
   }
 
   public async findAll(columns?: string[]): Promise<any[]> {
