@@ -7,7 +7,6 @@ describe('KoifyDatabase', () => {
       MYSQL_USER: string,
       MYSQL_PASSWORD: string,
       MYSQL_DATABASE: string,
-      MYSQL_TEST: string,
     }
 
     const envs = <ApplicationEnv>KoifyEnv(undefined, [
@@ -15,7 +14,6 @@ describe('KoifyDatabase', () => {
       'MYSQL_USER',
       'MYSQL_PASSWORD',
       'MYSQL_DATABASE',
-      'MYSQL_TEST'
     ]);
 
     const mysqlDbConfig = {

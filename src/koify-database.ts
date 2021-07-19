@@ -1,5 +1,28 @@
+/**
+ * How to use KoifyEnv
+ * 
+ * Example:
+ * const mysqlDbConfig = {
+ *    client: 'mysql',
+ *    connection: {
+ *       host: envs.MYSQL_HOST,
+ *       user: envs.MYSQL_USER,
+ *       password: envs.MYSQL_PASSWORD,
+ *       database: envs.MYSQL_DATABASE,
+ *    }
+ * };
+ * 
+ * KoifyDatabase.addConnection(mysqlDbConfig, 'mysql');
+ *
+ * const db = new KoifyMySQLDatabase('user', 'mysql');
+ * const result = await db.findAll();
+ */
+
 import knex, { Knex } from 'knex';
 
+/**
+ * Using Knex as the foundation, we create a global storage to store all database connection
+ */
 export class KoifyDatabase {
   private static store: Map<string, Knex<any, any[]>> = new Map();
 
