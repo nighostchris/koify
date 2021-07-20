@@ -39,7 +39,7 @@ export function KoifyEnv<T>(defaultVars?: any, required?: string[]): T {
       const key = required[i];
 
       if (!keys.includes(key)) {
-        throw Error(`Missing required environment variable with key: ${key}`);
+        throw new Error(`Missing required environment variable with key: ${key}`);
       }
     }
   }

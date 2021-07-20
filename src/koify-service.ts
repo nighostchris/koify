@@ -1,6 +1,6 @@
 /**
  * How to use KoifyService
- * 
+ *
  * Example:
  * class TestService extends KoifyService {
  *    public pong(ctx: any) {
@@ -12,20 +12,20 @@
  * }
  */
 
-import { IServiceReponse } from "./interfaces";
+import { IServiceReponse } from './interfaces';
 
 export class KoifyService {
-  public success({ ctx, body }: IServiceReponse) {
+  public static success({ ctx, body }: IServiceReponse) {
     ctx.response.status = 200;
     ctx.body = body;
   }
 
-  public error({ ctx, body }: IServiceReponse) {
+  public static error({ ctx, body }: IServiceReponse) {
     ctx.response.status = 500;
     ctx.body = body;
   }
 
-  public custom({ ctx, body, statusCode }: IServiceReponse) {
+  public static custom({ ctx, body, statusCode }: IServiceReponse) {
     if (typeof statusCode !== 'undefined') {
       ctx.response.status = statusCode;
       ctx.body = body;

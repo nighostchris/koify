@@ -1,24 +1,26 @@
+/* eslint-disable no-redeclare */
 /**
  * How to use KoifyRouter
- * 
+ *
  * KoifyRouter(router: Router, service: KoifyService, ...routes: IRoute[])
- * 
+ *
  * Example:
  * KoifyRouter(
  *    new Router(),
- *    handlerService, 
+ *    handlerService,
  *    Get('getAllAccounts'),
  *    Post('/add', 'addAccount')
  * )
  */
 
+import koaBody from 'koa-body';
 import Router from '@koa/router';
 
 import { IRoute } from './interfaces';
 
 export function KoifyRouter(router: Router, service: any, ...routes: IRoute[]): Router {
   routes.forEach((route: IRoute) => {
-    router[route.method](route.route || '/', async (ctx, next) => {
+    router[route.method](route.route || '/', koaBody(), async (ctx) => {
       try {
         // Return result inside service function by
         // ctx.body = { <results> }

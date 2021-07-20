@@ -68,7 +68,7 @@ export class KoifyMySQLDatabase {
     const connection = KoifyDatabase.getConnection(dbName);
 
     if (typeof connection === 'undefined') {
-      throw Error(`Cannot find database connection with name: ${dbName}`);
+      throw new Error(`Cannot find database connection with name: ${dbName}`);
     }
  
     this.connection = connection;
