@@ -1,0 +1,18 @@
+image: node:latest
+
+before_script:
+  - npm install
+  - npm run fix
+
+cache:
+  paths:
+    - node_modules/
+ 
+publish:
+  stage: deploy
+  script:
+    - npm run lint
+    - npm run build
+    - echo '//registry.npmjs.org/:_authToken=${NPM_REGISTRY_TOKEN}' > .npmrc
+    - npm publish
+  when: manual

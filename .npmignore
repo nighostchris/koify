@@ -1,7 +1,6 @@
 src/
 .git/
 tests/
-.github/
 .gitignore
 .npmignore
 node_modules/
