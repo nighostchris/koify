@@ -1,6 +1,6 @@
 {
   "name": "koify",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Complete ecosystem that assists you to setup feature-rich service with utilities like logging and database connector that embedded in the package. Based on Koa.js.",
   "author": "Chris Liu <chrisliupascal@gmail.com>",
   "repository": "git@github.com:nighostchris/koify.git",
@@ -36,6 +36,8 @@
     "dotenv": "^10.0.0",
     "knex": "^0.95.7",
     "koa": "^2.13.1",
-    "koa-body": "^4.2.0"
+    "koa-body": "^4.2.0",
+    "pg": "^8.6.0",
+    "sqlite3": "^5.0.2"
   }
 }

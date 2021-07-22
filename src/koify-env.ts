@@ -1,6 +1,7 @@
+/* eslint-disable import/prefer-default-export */
 /**
  * How to use KoifyEnv
- * 
+ *
  * Example:
  * interface ApplicationEnv {
  *    MYSQL_HOST: string,
@@ -22,7 +23,7 @@
 import dotenv from 'dotenv';
 
 /**
- * 
+ *
  * @param defaultVars An object that contains set of default key-value pair of environment variables
  * @param required An array of key-names of required environment variables
  * @returns An object of all environment variables in key-value pair

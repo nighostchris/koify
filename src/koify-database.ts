@@ -1,6 +1,7 @@
+/* eslint-disable max-classes-per-file */
 /**
  * How to use KoifyEnv
- * 
+ *
  * Example:
  * const mysqlDbConfig = {
  *    client: 'mysql',
@@ -11,10 +12,10 @@
  *       database: envs.MYSQL_DATABASE,
  *    }
  * };
- * 
+ *
  * KoifyDatabase.addConnection(mysqlDbConfig, 'mysql');
  *
- * const db = new KoifyMySQLDatabase('user', 'mysql');
+ * const db = new KoifyRelationalDatabase('user', 'mysql');
  * const result = await db.findAll();
  */
 
@@ -31,7 +32,7 @@ export class KoifyDatabase {
 
     if (typeof connection === 'undefined') {
       connection = knex(config);
-      this.store.set(name, connection);  
+      this.store.set(name, connection);
     }
 
     return connection;
@@ -48,7 +49,7 @@ export class KoifyDatabase {
       if (typeof connection !== 'undefined') {
         connection.destroy();
       }
-  
+
       this.store.delete(name);
 
       return true;
@@ -58,7 +59,7 @@ export class KoifyDatabase {
   }
 }
 
-export class KoifyMySQLDatabase {
+export class KoifyRelationalDatabase {
   private table: string;
 
   private connection: Knex<any, any[]>;
@@ -70,7 +71,7 @@ export class KoifyMySQLDatabase {
     if (typeof connection === 'undefined') {
       throw new Error(`Cannot find database connection with name: ${dbName}`);
     }
- 
+
     this.connection = connection;
   }
 
