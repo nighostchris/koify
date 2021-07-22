@@ -2,7 +2,7 @@
  * How to use KoifyRequest
  *
  * Example:
- * const getUsersRequest = KoifyRequest([{
+ * const getUsersRequest = new KoifyRequest([{
  *    name: 'username',
  *    from: 'params',
  *    type: 'string',
@@ -55,11 +55,16 @@ export class KoifyRequest {
             variable = String(variable);
             break;
           case 'number':
+            try {
+              variable = Number(variable);
+            } catch (error) {
+              throw new Error(error);
+            }
+
             if (!KoifyValidator.isNumber(variable)) {
               throw new Error(`Variable '${v.name}' is not a number`);
             }
 
-            variable = Number(variable);
             break;
           case 'boolean':
             if (variable === 'true') {
@@ -76,16 +81,12 @@ export class KoifyRequest {
 
             break;
           case 'object':
-            variable = JSON.parse(variable);
-
             if (!KoifyValidator.isObject(variable)) {
               throw new Error(`Variable '${v.name}' is not an object`);
             }
 
             break;
           case 'array':
-            variable = JSON.parse(variable);
-
             if (!KoifyValidator.isArray(variable)) {
               throw new Error(`Variable '${v.name}' is not an array`);
             }

@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 /**
  * How to use KoifyService
  *
@@ -15,17 +16,17 @@
 import { IServiceReponse } from './interfaces';
 
 export class KoifyService {
-  public static success({ ctx, body }: IServiceReponse) {
+  public success({ ctx, body }: IServiceReponse) {
     ctx.response.status = 200;
     ctx.body = body;
   }
 
-  public static error({ ctx, body }: IServiceReponse) {
+  public error({ ctx, body }: IServiceReponse) {
     ctx.response.status = 500;
     ctx.body = body;
   }
 
-  public static custom({ ctx, body, statusCode }: IServiceReponse) {
+  public custom({ ctx, body, statusCode }: IServiceReponse) {
     if (typeof statusCode !== 'undefined') {
       ctx.response.status = statusCode;
       ctx.body = body;
