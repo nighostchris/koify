@@ -23,22 +23,66 @@ import { KoifyRouter, Get, KoifyService } from 'koify';
 
 const app = new Koa();
 
-class RootService extends KoifyService {
-  public pong(ctx: any) {
+const getUsersRequest = new KoifyRequest([{
+  name: 'username',
+  from: 'params',
+  type: 'string',
+  require: true,
+}, {
+  name: 'age',
+  from: 'query',
+  type: 'number',
+  validator: () => true,
+  require: true,
+}, {
+  name: 'location',
+  from: 'body',
+  type: 'string',
+  require: false,
+}, {
+  name: 'accounts',
+  from: 'body',
+  type: 'array',
+  require: false,
+}, {
+  name: 'detail',
+  from: 'body',
+  type: 'object',
+  require: false,
+}, {
+  name: 'isLast',
+  from: 'body',
+  type: 'boolean',
+  require: false,
+}]);
+
+class TestService extends KoifyService {
+  public test(ctx: any) {
+    const { username } : { username: string } = getUsersRequest.getParams(ctx);
+    const { age } : { age: number } = getUsersRequest.getQuery(ctx);
+    const {
+      location, accounts, detail, isLast,
+    } : {
+      location: string,
+      accounts: any[],
+      detail: any,
+      isLast: boolean,
+    } = getUsersRequest.getBody(ctx);
+
     return this.success({
       ctx,
-      body: { result: 'pong' },
+      body: { username, age, location, accounts, detail, isLast },
     });
   }
 };
 
-const pingRouter = KoifyRouter(
+const router = KoifyRouter(
   new Router(),
-  new RootService(),
-  Get('/ping', 'pong'),
+  new TestService(),
+  Post('/:username', 'test'),
 );
 
-app.use(pingRouter.routes());
+app.use(router.routes());
 
 app.listen(3000);
 
