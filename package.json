@@ -9,6 +9,7 @@
   "scripts": {
     "test": "jest --verbose --config jest.config.js",
     "lint": "eslint --config .eslintrc.json --ignore-path .eslintignore ./src/**/*.ts",
+    "fix": "eslint --config .eslintrc.json --fix --ignore-path .eslintignore ./src/**/*.ts",
     "build": "npx tsc",
     "jest-init": "npx ts-jest config:init"
   },
